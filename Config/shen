@@ -1,0 +1,71 @@
+[General]
+ipv6 = true
+skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
+bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
+dns-server = 119.29.29.29,2402:4e00::
+resource-parser = https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Resource/Script/Sub-Store/sub-store-parser_for_loon.js
+proxy-test-url = http://cp.cloudflare.com/generate_204
+allow-wifi-access = false
+wifi-access-http-port = 7222
+wifi-access-socks5-port = 7221
+test-timeout = 2
+interface-mode = auto
+switch-node-after-failure-times = 3
+
+[Proxy]
+
+[Remote Proxy]
+
+[Remote Filter]
+香港 = NameRegex, FilterKey = "(?i)(港|HK|Hong)"
+台湾 = NameRegex, FilterKey = "(?i)(台|TW|Tai)"
+日本 = NameRegex, FilterKey = "(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)"
+韩国 = NameRegex, FilterKey = "(?i)(KR|Korea|KOR|首尔|韩|韓)"
+美国 = NameRegex, FilterKey = "(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
+狮城 = NameRegex, FilterKey = "(?i)(新加坡|坡|狮城|SG|Singapore)"
+
+
+[Proxy Group]
+PROXY = select,JP,TW,HK,SG,US,KR,img-url = https://raw.githubusercontent.com/Orz-3/face/master/Auto.png
+HK = url-test,香港,url = http://www.gstatic.com/generate_204,interval = 600,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+TW = url-test,台湾,url = http://www.gstatic.com/generate_204,interval = 600,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+SG = url-test,狮城,url = http://www.gstatic.com/generate_204,interval = 600,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+KR = url-test,韩国,url = http://www.gstatic.com/generate_204,interval = 600,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
+JP = url-test,日本,url = http://www.gstatic.com/generate_204,interval = 600,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+US = url-test,美国,url = http://www.gstatic.com/generate_204,interval = 600,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+
+[Rule]
+FINAL,PROXY
+
+[Remote Rule]
+https://raw.githubusercontent.com/1shens/Loon/main/Rule/Apple, policy=DIRECT, tag=苹果商店, enabled=true
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Spotify/Spotify.list, policy=DIRECT, tag=音乐直连, enabled=true
+https://raw.githubusercontent.com/1shens/Loon/main/Rule/LAN, policy=DIRECT, tag=国内直连, enabled=true
+https://raw.githubusercontent.com/1shens/Loon/main/Rule/GEOIP, policy=DIRECT, tag=国内直连, enabled=true
+
+[Host]
+# ssid:PHICOMM_5G = server:10.0.0.1
+
+[Rewrite]
+
+[Script]
+
+[Plugin]
+https://raw.githubusercontent.com/1shens/Loon/main/Rewrite/Google, tag=谷歌重定向, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/Weibo_remove_ads.plugin, tag=微博去广告, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/Zhihu_remove_ads.plugin, tag=知乎去广告, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/Remove_splash_screen_ads.plugin, tag=开屏去广告, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/RedPaper_remove_ads.plugin, tag=小红书净化, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/Weixin_Official_Accounts_remove_ads.plugin, tag=微信去广告, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/YouTube_remove_ads.plugin, tag=油管去广告, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/NeteaseCloudMusic_remove_ads.plugin, tag=网易云音乐, enabled=true
+https://raw.githubusercontent.com/deezertidal/private/main/SpotifyPremium.plugin, tag=声破天会员, enabled=true
+https://raw.githubusercontent.com/deezertidal/private/main/fanqienovel.plugin, tag=番茄去广告, enabled=true
+https://raw.githubusercontent.com/DualSubs/DualSubs/main/plugin/DualSubs.plugin, tag=多媒体翻译, enabled=true
+https://gitlab.com/lodepuly/vpn_tool/-/raw/main/Tool/Loon/Plugin/LoonGallery.plugin, tag=插件安装库, enabled=true
+
+[MITM]
+enable = true
+skip-server-cert-verify = true
+ca-p12 =  
+ca-passphrase =
